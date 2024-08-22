@@ -55,7 +55,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 (0, database_1.connect)();
                 app = (0, express_1.default)();
                 port = "".concat(process.env.PORT) || 3000;
-                app.use("/graphql", auth_middleware_1.requireAuth);
+                app.use("/api/graphql", auth_middleware_1.requireAuth);
                 appolloServer = new apollo_server_express_1.ApolloServer({
                     typeDefs: index_typeDefs_1.typeDefs,
                     resolvers: index_resolver_1.resolvers,
@@ -70,7 +70,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 _a.sent();
                 appolloServer.applyMiddleware({
                     app: app,
-                    path: "/graphql"
+                    path: "/api/graphql"
                 });
                 app.listen(port, function () {
                     console.log("App listening on port ".concat(port));

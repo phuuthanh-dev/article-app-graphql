@@ -14,7 +14,7 @@ const startServer = async () => {
     const app: Express = express();
     const port: (number | string) = `${process.env.PORT}` || 3000;
 
-    app.use("/graphql", requireAuth)
+    app.use("/api/graphql", requireAuth)
 
     const appolloServer = new ApolloServer({
         typeDefs,
@@ -27,7 +27,7 @@ const startServer = async () => {
 
     appolloServer.applyMiddleware({
         app: app,
-        path: "/graphql"
+        path: "/api/graphql"
     });
 
     app.listen(port, () => {
